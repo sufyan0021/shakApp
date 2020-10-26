@@ -22,12 +22,12 @@ import ManualInventory from './components/ManualInventory';
 import ChangePlanStatus from './components/ChangePlanStatus';
 import MultyIn from './components/MultyIn';
 import SingleIn from './components/SingleIn';
-<<<<<<< Updated upstream
+
 import ScanBarcodeforManualInventory from './components/ScanBarcodeforManualInventory'
-=======
+
 import MultyOut from './components/MultyOut';
 import OpeningInventory from './components/OpeningInventory';
->>>>>>> Stashed changes
+
 
 
 export default function App() {
@@ -36,11 +36,11 @@ export default function App() {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <View style={styles.container}>
-<<<<<<< Updated upstream
+
       <InputOutputRep/>
-=======
+
       <MultyOut/>      
->>>>>>> Stashed changes
+
     </View>
     </TouchableWithoutFeedback>
   );
