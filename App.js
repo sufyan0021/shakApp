@@ -22,6 +22,7 @@ import ManualInventory from './components/ManualInventory';
 import ChangePlanStatus from './components/ChangePlanStatus';
 import MultyIn from './components/MultyIn';
 import SingleIn from './components/SingleIn';
+import ScanBarcodeforManualInventory from './components/ScanBarcodeforManualInventory'
 
 
 export default function App() {
@@ -30,7 +31,7 @@ export default function App() {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <View style={styles.container}>
-      <Grn/>      
+      <InputOutputRep/>
     </View>
     </TouchableWithoutFeedback>    
   );

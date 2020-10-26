@@ -1,61 +1,72 @@
-import React from 'react';
-import {View,Text,TouchableOpacity,TextInput,Button,StyleSheet} from 'react-native';
+import React,{useState} from 'react';
+import {View,Text,TouchableOpacity,TextInput,StyleSheet,Picker} from 'react-native';
+import { Button } from 'react-native-elements';
+import RadioGroup from 'react-native-radio-buttons-group';
 
 const SearchItem = () =>{
-
+    const [selectedValue, setSelectedValue] = useState("java");
+    const [data,setData] = useState([
+        {
+          label: 'Used',
+          value:'Used'
+         },
+         {
+          label: 'Not Used',
+          value:'Not Used'
+         },
+         {
+            label: 'All',
+            value:'All'
+           }
+        ]);
+       const  onRadioButtonSelect = data => setData({data});
     return(
 
         <View>
-            <Text>Search Item</Text>
-            <View style = {{flexDirection:'row'}}>
-            <TouchableOpacity style={styles.circle} >                                 
-            </TouchableOpacity>
-            <Text>Used</Text>
-            <TouchableOpacity style={styles.circle} >                 
-            </TouchableOpacity>
-            <Text>Not Used</Text>
-            <TouchableOpacity style={styles.circle} >                 
-            </TouchableOpacity>
-            <Text>Both</Text>
+            <Text>Search Any Item</Text>
+            <View style={styles.inputDiv}>
+                <Text style={styles.inputText}>Is Used?</Text>
+                <RadioGroup radioButtons={data} onPress={onRadioButtonSelect} flexDirection='row' />
             </View>
-            <View style = {{flexDirection:'row'}}>
-                <Text>Supplier Barcode</Text>
+            <View style={styles.inputDiv}>
+                <Text style={styles.inputText}>Supplier Barcode</Text>
                 <TextInput 
                 placeholder= 'Supplier Barcode'
-                style={{borderWidth: 1,borderStyle:'solid'}}
+                style={styles.input}
                 />
                 <Button title = 'Show'/>
             </View>
 
-            <View style = {{flexDirection:'row'}}>
-                <Text>Location</Text>
-                <TextInput 
-                placeholder= 'Location'
-                style={{borderWidth: 1,borderStyle:'solid'}}
-                />
+            <View style={styles.inputDiv}>
+                <Text style={styles.inputText}>Location</Text>
+                <Picker
+                    selectedValue={selectedValue}
+                    style={{ height: 50, width: 150 }}
+                    onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+                >
+                    <Picker.Item label="Java" value="java" />
+                    <Picker.Item label="JavaScript" value="js" />
+                </Picker>
                 <Button title = 'Show'/>
             </View>
-            <View style = {{flexDirection:'row'}}>
-                <Text>Item Code</Text>
+            <View style={styles.inputDiv}>
+                <Text style={styles.inputText}>Item Code</Text>
                 <TextInput 
                 placeholder= 'Item Code'
-                style={{borderWidth: 1,borderStyle:'solid'}}
+                style={styles.input}
                 />
                 <Button title = 'Show'/>
             </View>
-            <View><Text style={{fontWeight:'bold'}}>Show By Location and Item</Text></View>
+            <View><Text style={{fontWeight:'bold',paddingVertical:15}}>Show By Location and Item</Text></View>
 
-            <View style = {{flexDirection:'row'}}>
-                <Text>Intenal Barcode</Text>
+            <View style={styles.inputDiv}>
+                <Text style={styles.inputText}>Internal Barcode</Text>
                 <TextInput 
-                placeholder= 'Inernal Barcode'
-                style={{borderWidth: 1,borderStyle:'solid'}}
+                placeholder= 'Internal Barcode'
+                style={styles.input}
                 />
                 <Button title = 'Show'/>
             </View>
-            
-
-
         </View>
     )
 }
@@ -67,22 +78,28 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center'
     },
-    circle: {
-        height: 20,
-        width: 20,
-        borderRadius: 10,
+    inputDiv:{
+        flexDirection:'row',
+        paddingBottom:15,
+        justifyContent:'space-evenly'
+    },
+    input: {
+        flexGrow:2,
+        width: 200,
+        height: 24,
         borderWidth: 1,
-        borderColor: '#ACACAC',
-        alignItems: 'center', // To center the checked circle…
-        justifyContent: 'center',
-        marginHorizontal: 10
-        },
-        checkedCircle: {
-        width: 14,
-        height: 14,
-        borderRadius: 7,
-        backgroundColor: '#131313' // You can set it default or with yours one…
-        }
+        borderColor: '#777',
+        marginBottom: 10,
+        marginHorizontal:10, 
+        borderTopWidth:0,
+        borderRightWidth:0,
+        borderLeftWidth:0
+    },
+    inputText:{
+        marginHorizontal:10,
+        flexGrow:1,
+        alignSelf:'center'
+     }
 })
 
 export default SearchItem

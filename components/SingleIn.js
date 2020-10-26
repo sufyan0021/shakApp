@@ -1,26 +1,27 @@
 import React,{Component} from 'react'
-import {View,Text,TextInput,Button,StyleSheet} from 'react-native'
+import {View,Text,TextInput,StyleSheet} from 'react-native';
+import { Button } from 'react-native-elements';
 
 export default class SingleIn extends Component{
     render(){
         return(
-                <View>
+                <View style={styles.container}>
                     <Text>Input to Machine (Single Entry)</Text>
-                    <View style={{flexDirection:'row',alignItems:'center'}}>
+                    <View style={styles.inputDiv}>
                         <Text>Barcode</Text>
-                        <TextInput placeholder= 'Barcode'  style={{borderWidth:1}}/>
+                        <TextInput placeholder= 'Barcode'  style={styles.input}/>
                         <Button title = 'Scan'/>
                     </View>
-                    <View>
-                        <Text placeholder = 'Item Detail'  style={{borderWidth:1}}/>
+                    <View style={styles.inputDiv}>
+                        <Text placeholder = 'Item Detail' style={styles.input}/>
                     </View>
                     <View>
-                        <Text>Output Item Detail</Text>
-                        <View style={{flexDirection:'row',alignItems:'center'}}>
-                            <TextInput placeholder='output Item Code'
-                             style={{borderWidth:1}}/>
-                            <TextInput placeholder='output Item Description'
-                              style={{borderWidth:1}}/>
+                        <Text>Product Detail</Text>
+                        <View style={styles.inputDiv}>
+                            <TextInput placeholder='Output Item Code'
+                             style={styles.input}/>
+                            <TextInput placeholder='Output Item Description'
+                              style={styles.input}/>
                         </View>   
                         <Button title = 'Save'/>                      
                     </View>
@@ -29,3 +30,38 @@ export default class SingleIn extends Component{
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container:{
+        flex:1,
+        flexWrap:'wrap',
+        backgroundColor:'#fff',
+        alignItems:'center',
+        justifyContent:'center',
+        paddingHorizontal:10
+    },
+    inputDiv:{
+        marginVertical:15,
+        flexDirection:'row',
+        paddingBottom:15,
+        justifyContent:'space-evenly'
+    },
+    input: {
+        flexGrow:2,
+        width: 200,
+        height: 24,
+        borderWidth: 1,
+        borderColor: '#777',
+        marginBottom: 10,
+        marginHorizontal:10, 
+        borderTopWidth:0,
+        borderRightWidth:0,
+        borderLeftWidth:0
+    },
+    inputText:{
+        marginHorizontal:10,
+        flexGrow:1,
+        alignSelf:'center'
+     }
+})
+

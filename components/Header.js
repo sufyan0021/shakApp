@@ -6,7 +6,7 @@ export default class Header extends React.Component{
     render(){
         return(
             <View 
-            style={{height:'10%',Weidth:'100%',flexDirection:'column',alignItems:'left', backgroundColor:'green'}}
+            style={{height:'10%',width:'100%',flexDirection:'column',alignItems:'left', backgroundColor:'green'}}
             >
                 <Text>Process Automation System (PAS)</Text>             
             </View>            
